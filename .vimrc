@@ -13,9 +13,9 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'stephpy/vim-php-cs-fixer'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'tpope/vim-fugitive'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'qualiabyte/vim-colorstepper'
+Plugin 'duythinht/vim-coffee'
 call vundle#end()
 syntax on
 filetype plugin indent on
@@ -31,6 +31,7 @@ let g:airline_powerline_fonts=1
 set laststatus=2
 
 "colorscheme
+set t_Co=256
 colorscheme coffee
 
 "vim-gitgutter
@@ -86,6 +87,7 @@ fun! VexOpen(dir)
 	call VexSize(25)
 endf
 
+"Maybe one could close by bufnr instead?
 fun! VexClose()
 	let cur_win_nr = winnr()
 	let target_nr = (cur_win_nr == 1? winnr("#"):cur_win_nr)

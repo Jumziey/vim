@@ -1,2 +1,2 @@
 # vim
-My personal vim settings
+My personal vim settings, with vundle included!
