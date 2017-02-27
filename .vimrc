@@ -13,9 +13,12 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'stephpy/vim-php-cs-fixer'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'tpope/vim-fugitive'
 Plugin 'duythinht/vim-coffee'
+Plugin 'suan/vim-instant-markdown'
+Plugin 'fatih/vim-go'
+Plugin 'ervandew/supertab'
+Plugin 'garyburd/go-explorer'
 call vundle#end()
 syntax on
 filetype plugin indent on
@@ -29,6 +32,7 @@ map <Space> <Leader>
 "airline
 let g:airline_powerline_fonts=1
 set laststatus=2
+let g:airline_theme="base16_mocha"
 
 "colorscheme
 set t_Co=256
@@ -36,6 +40,14 @@ colorscheme coffee
 
 "vim-gitgutter
 set updatetime=250
+
+"supertab + completion
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+set completeopt-=preview
+
+"markdown preview
+let g:instant_markdown_autostart = 0
+let g:instant_markdown_slow = 1
 
 "Easymotion
 let g:EasyMotion_do_mapping=1
@@ -45,12 +57,10 @@ map <Leader>n <Plug>(easymotion-k)
 map <Leader>j <Plug>(easymotion-t)
 map <Leader>J <Plug>(easymation-T)
 
-"airline
-let g:airline_theme="base16_mocha"
 
 "php-cs-fixer
 let g:php_cs_fixer_rules = "@PSR2"
-let g:php_cs_fixer_fixers_list = "align_double_arrow,align_equals,whitespacy_lines,ordered_use"
+let g:php_cs_fixer_fixers_list = ""
 let g:php_cs_fixer_enable_default_mapping = 1
 
 "netrw, fix for dvorak
@@ -118,8 +128,14 @@ augroup END
 map <Leader>f :call VexToggle(".")<CR>
 
 "Tabbing
+set ts=2 sw=2 ai
 autocmd Filetype php setlocal ts=4 sw=4 expandtab
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType conf setlocal ts=2 sts=2 sw=2 ai
 
+"Spelling
+autocmd Filetype tex set spelllang=en_gb spell
+autocmd Filetype markdown set spelllang=en_gb spell
 "php syntax
 function! PhpSyntaxOverride()
   hi! def link phpDocTags  phpDefine
@@ -130,6 +146,8 @@ augroup phpSyntaxOverride
   autocmd!
   autocmd FileType php call PhpSyntaxOverride()
 augroup END
+
+
 
 "
 "Auto reload vim on changed vimrc
