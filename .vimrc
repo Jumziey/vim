@@ -19,9 +19,16 @@ Plugin 'suan/vim-instant-markdown'
 Plugin 'fatih/vim-go'
 Plugin 'ervandew/supertab'
 Plugin 'garyburd/go-explorer'
+Plugin 'OmniSharp/omnisharp-vim.git'
+Plugin 'tpope/vim-dispatch'
 call vundle#end()
 syntax on
 filetype plugin indent on
+
+"Encoding
+if has("win32")
+	set encoding=utf-8
+endif
 
 "Dvorak
 noremap t j
@@ -136,6 +143,7 @@ autocmd FileType conf setlocal ts=2 sts=2 sw=2 ai
 "Spelling
 autocmd Filetype tex set spelllang=en_gb spell
 autocmd Filetype markdown set spelllang=en_gb spell
+
 "php syntax
 function! PhpSyntaxOverride()
   hi! def link phpDocTags  phpDefine
@@ -147,9 +155,6 @@ augroup phpSyntaxOverride
   autocmd FileType php call PhpSyntaxOverride()
 augroup END
 
-
-
-"
 "Auto reload vim on changed vimrc
 augroup myvimrc
 	au!
