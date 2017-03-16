@@ -22,6 +22,7 @@ Plugin 'garyburd/go-explorer'
 Plugin 'OmniSharp/omnisharp-vim.git'
 Plugin 'tpope/vim-dispatch'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'chrisbra/Colorizer'
 call vundle#end()
 syntax on
 filetype plugin indent on
@@ -67,14 +68,17 @@ set completeopt-=preview
 let g:instant_markdown_autostart = 0
 let g:instant_markdown_slow = 1
 
+"Markdown tables
+let g:table_mode_corner="|"
+
 "Easymotion
 let g:EasyMotion_do_mapping=1
 map <Leader> <Plug>(easymotion-prefix)
 map <Leader>t <Plug>(easymotion-j)
 map <Leader>n <Plug>(easymotion-k)
 map <Leader>j <Plug>(easymotion-t)
-map <Leader>J <Plug>(easymation-T)
-
+map <Leader>J <Plug>(easymotion-T)
+map <Leader>h <Plug>(easymotion-h)
 
 "php-cs-fixer
 let g:php_cs_fixer_rules = "@PSR2"
