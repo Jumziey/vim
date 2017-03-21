@@ -28,9 +28,7 @@ syntax on
 filetype plugin indent on
 
 "Encoding
-if has("win32")
-	set encoding=utf-8
-endif
+set encoding=utf-8
 
 "Dvorak
 noremap t j
