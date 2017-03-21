@@ -76,9 +76,7 @@ let g:EasyMotion_do_mapping=1
 map <Leader> <Plug>(easymotion-prefix)
 map <Leader>t <Plug>(easymotion-j)
 map <Leader>n <Plug>(easymotion-k)
-map <Leader>j <Plug>(easymotion-t)
-map <Leader>J <Plug>(easymotion-T)
-map <Leader>h <Plug>(easymotion-h)
+map <Leader>h <Plug>(easymotion-F)
 
 "php-cs-fixer
 let g:php_cs_fixer_rules = "@PSR2"
