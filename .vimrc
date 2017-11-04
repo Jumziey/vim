@@ -6,6 +6,7 @@ call vundle#begin()
 "Plugins
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-scripts/netrw.vim'
+Plugin 'majutsushi/tagbar'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -19,10 +20,14 @@ Plugin 'suan/vim-instant-markdown'
 Plugin 'fatih/vim-go'
 Plugin 'ervandew/supertab'
 Plugin 'garyburd/go-explorer'
-Plugin 'OmniSharp/omnisharp-vim.git'
+"Plugin 'OmniSharp/omnisharp-vim.git'
 Plugin 'tpope/vim-dispatch'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'chrisbra/Colorizer'
+Plugin 'pearofducks/ansible-vim'
+Plugin 'godlygeek/csapprox'
+Plugin 'lervag/vimtex'
+Plugin 'davidhalter/jedi-vim'
 call vundle#end()
 syntax on
 filetype plugin indent on
@@ -36,6 +41,18 @@ noremap n k
 noremap s l
 map <Space> <Leader>
 
+"vimtex
+let g:vimtex_view_method='mupdf'
+
+"tag jumping
+noremap <c-h> <c-]>
+noremap <c-g> :tselect<CR>
+
+"tagbar
+nmap <Leader>g :TagbarToggle<CR>
+let g:tagbar_left=1
+nmap <Plug>s <Plug>l
+
 "airline
 let g:airline_powerline_fonts=1
 set laststatus=2
@@ -46,13 +63,19 @@ set t_Co=256
 colorscheme coffee
 
 "vim-gitgutter
+nmap <Leader><Leader>hs <Plug>GitGutterStageHunk
+nmap <Leader><Leader>hu <Plug>GitGutterUndoHunk
 set updatetime=250
 
 "syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
+let g:syntastic_tex_checkers = ['lacheck']
+let g:syntastic_quiet_messages = { "regex": [
+        \ '\mpossible unwanted space at "{"',
+        \ 'Dots should be \\ldots in "1,...',
+				\] }
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -75,6 +98,10 @@ map <Leader> <Plug>(easymotion-prefix)
 map <Leader>t <Plug>(easymotion-j)
 map <Leader>n <Plug>(easymotion-k)
 map <Leader>h <Plug>(easymotion-F)
+
+"ansible yaml
+let g:ansible_unindent_after_newline = 1
+autocmd BufNewFile,BufRead *.yml   set syntax=ansible
 
 "php-cs-fixer
 let g:php_cs_fixer_rules = "@PSR2"
@@ -148,7 +175,6 @@ map <Leader>f :call VexToggle(".")<CR>
 "Tabbing
 set ts=2 sw=2 ai
 autocmd Filetype php setlocal ts=4 sw=4 expandtab
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType conf setlocal ts=2 sts=2 sw=2 ai
 
 "Spelling
@@ -172,3 +198,4 @@ augroup myvimrc
 	    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
 
+map <Leader>aoeuhtns <Nop>
