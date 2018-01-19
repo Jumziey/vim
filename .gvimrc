@@ -7,8 +7,10 @@ if has ("win32")
 else
 	"set guifont=mononoki\ Regular\ 12
 	"set guifont=Inconsolata\ for\ Powerline\ Medium\ 13
-	set guifont=Fira\ Code\ Regular\ 11
-	"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 11
+	"set guifont=Fira\ Code\ Regular\ 11
+	"set guifont=FuraMono\ Nerd\ Font\ Regular\ 12
+	set guifont=Knack\ Nerd\ Font\ Mono\ 12
+	"set guifont=DejaVu\ Sans\ Mono\ 11
 endif
 
 "Use the system clipboard
